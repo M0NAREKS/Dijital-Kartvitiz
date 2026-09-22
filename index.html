@@ -3,221 +3,419 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#071b14">
-  <meta name="description" content="NeuroOncoTrack-AI — sağlık teknolojileri ve yapay zekâ proje ekibi dijital kartviziti.">
+  <meta name="theme-color" content="#071812">
+  <meta name="description" content="NeuroOncoTrack-AI proje ekibi dijital kartviziti.">
   <meta name="color-scheme" content="dark">
   <title>NeuroOncoTrack-AI | Dijital Kartvizit</title>
   <style>
     :root{
-      --bg:#061812;
-      --bg2:#0a2119;
-      --panel:#0d2a20;
-      --panel2:#103427;
-      --surface:#123a2c;
-      --text:#f4f8f5;
-      --muted:#a7b9af;
-      --accent:#7bd7a6;
-      --accent2:#c9f1dc;
-      --accent3:#4aa97a;
-      --line:rgba(219,244,230,.12);
-      --line2:rgba(219,244,230,.22);
-      --shadow:0 28px 80px rgba(0,0,0,.28);
-      --radius:26px;
+      --bg:#06140f;
+      --bg-soft:#091c15;
+      --card:#0b2119;
+      --card-2:#0d281e;
+      --text:#f3f7f4;
+      --muted:#9caea4;
+      --accent:#8bd9b2;
+      --accent-soft:#ccebdd;
+      --line:rgba(222,244,233,.11);
+      --line-strong:rgba(222,244,233,.2);
+      --shadow:0 26px 70px rgba(0,0,0,.28);
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0;min-width:320px;color:var(--text);
+      margin:0;
+      min-width:320px;
+      color:var(--text);
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       background:
-        radial-gradient(circle at 14% 9%,rgba(123,215,166,.13),transparent 26rem),
-        radial-gradient(circle at 88% 34%,rgba(74,169,122,.11),transparent 32rem),
-        linear-gradient(145deg,var(--bg) 0%,#081f17 50%,#05150f 100%);
-      overflow-x:hidden;
+        radial-gradient(circle at 12% 0%,rgba(92,178,132,.11),transparent 28rem),
+        linear-gradient(145deg,var(--bg),#071812 58%,#04100c);
+      min-height:100vh;
     }
-    body:before{
-      content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;
-      background:radial-gradient(circle at 74% 18%,rgba(201,241,220,.08),transparent 28rem);
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
+                 linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+      background-size:52px 52px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.35),transparent 70%);
     }
+
     a{color:inherit;text-decoration:none}
     button{font:inherit;color:inherit}
     svg{display:block}
-    .page{width:min(1180px,calc(100% - 40px));margin:auto;position:relative;z-index:1}
+    .shell{width:min(1120px,calc(100% - 40px));margin:0 auto;position:relative;z-index:1}
 
-    .topbar{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}
-    .brand{display:flex;align-items:center;gap:12px;min-width:0}
-    .brand-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:none;border:1px solid var(--line2);background:linear-gradient(145deg,rgba(123,215,166,.16),rgba(255,255,255,.025));font-size:13px;font-weight:950;letter-spacing:-.05em;color:var(--accent2)}
-    .brand strong{display:block;font-size:14px;letter-spacing:-.02em}.brand small{display:block;margin-top:3px;color:var(--muted);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+    header{
+      min-height:88px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      border-bottom:1px solid var(--line);
+    }
 
-    .hero{display:block;padding:112px 0 104px}.hero>div{max-width:860px}
-    .eyebrow{margin:0 0 15px;color:var(--accent);font-size:10px;font-weight:950;letter-spacing:.18em;text-transform:uppercase}
-    h1{margin:0;font-size:clamp(56px,7.2vw,92px);line-height:.91;letter-spacing:-.073em;font-weight:850;max-width:780px}
-    h1 span{display:block;color:var(--accent2)}
-    .tagline{margin:22px 0 0;font-size:clamp(19px,2.4vw,27px);font-weight:760;letter-spacing:-.035em;color:#e6f3ec}
-    .lead{max-width:650px;margin:15px 0 0;color:var(--muted);font-size:14px;line-height:1.82}
-    .hero-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:31px}
-    .btn{min-height:48px;padding:0 17px;border-radius:13px;border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-size:12px;font-weight:850;transition:.2s ease;background:none}
-    .btn:hover{transform:translateY(-2px)}.btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .btn-primary{background:#e3f7ec;color:#08251b;box-shadow:0 12px 30px rgba(0,0,0,.14)}
-    .btn-secondary{background:rgba(255,255,255,.025);border-color:var(--line2);color:#e9f4ee}
+    .brand{display:flex;align-items:center;gap:13px;min-width:0}
+    .mark{
+      width:44px;height:44px;border-radius:13px;
+      display:grid;place-items:center;flex:none;
+      border:1px solid var(--line-strong);
+      background:linear-gradient(145deg,rgba(139,217,178,.14),rgba(255,255,255,.02));
+      color:var(--accent-soft);font-size:12px;font-weight:900;letter-spacing:-.05em;
+    }
+    .brand strong{display:block;font-size:14px;letter-spacing:-.025em}
+    .brand small{display:block;margin-top:3px;color:var(--muted);font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+    .share{
+      width:42px;height:42px;border-radius:12px;border:1px solid var(--line);
+      background:rgba(255,255,255,.02);display:grid;place-items:center;cursor:pointer;
+      transition:.18s ease;
+    }
+    .share:hover{background:rgba(139,217,178,.07);border-color:var(--line-strong);transform:translateY(-1px)}
+    .share svg{width:17px;height:17px;fill:none;stroke:#dcece4;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-    .about{padding:0 0 92px;display:grid;grid-template-columns:.72fr 1.28fr;gap:72px;align-items:start}.about h2,.team-head h2{margin:0;font-size:clamp(34px,4.4vw,50px);line-height:1.02;letter-spacing:-.052em}.about-copy{color:var(--muted);font-size:13px;line-height:1.82;margin:0}.focus-grid{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.focus{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.018)}.focus b{display:block;color:var(--accent);font-size:10px;margin-bottom:8px}.focus strong{font-size:13px;line-height:1.4}.focus p{margin:8px 0 0;color:var(--muted);font-size:10px;line-height:1.55}
+    .intro{padding:66px 0 34px}
+    .intro p{margin:0;color:var(--accent);font-size:9px;font-weight:850;letter-spacing:.18em;text-transform:uppercase}
+    .intro h1{margin:10px 0 0;font-size:clamp(31px,4.6vw,52px);line-height:1;letter-spacing:-.055em;font-weight:830}
+    .intro .sub{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.7;max-width:600px}
 
-    .team-section{padding:0 0 92px}.team-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:28px}.team-head p:last-child{max-width:430px;margin:0;color:var(--muted);font-size:12px;line-height:1.7}
-    .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-    .member{min-width:0;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:linear-gradient(180deg,rgba(15,47,36,.95),rgba(8,31,23,.96));box-shadow:0 16px 44px rgba(0,0,0,.13);transition:.22s ease}.member:hover{transform:translateY(-4px);border-color:rgba(201,241,220,.24)}
-    .portrait{height:185px;position:relative;overflow:hidden;background:linear-gradient(145deg,#184c39,#0b2e22);display:grid;place-items:center}.portrait:after{content:"";position:absolute;inset:auto -15% -45% -15%;height:75%;border-radius:50%;background:radial-gradient(circle,rgba(123,215,166,.16),transparent 68%)}.portrait span{position:relative;z-index:1;font-size:30px;font-weight:950;color:var(--accent2);letter-spacing:-.06em}.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;z-index:2}.portrait.has-photo img{display:block}
-    .member-body{padding:18px}.role{color:var(--accent);font-size:8px;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.member h3{margin:7px 0 4px;font-size:20px;letter-spacing:-.04em}.member-sub{margin:0 0 16px;color:var(--muted);font-size:9.5px}.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.action{min-height:42px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.022);display:grid;place-items:center;cursor:pointer;transition:.18s ease}.action:hover{background:rgba(123,215,166,.09);border-color:var(--line2)}.action svg{width:17px;height:17px;fill:none;stroke:#dff1e8;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.action.qr{color:var(--accent2)}.action.qr svg{stroke:currentColor}
-    .action-row-label{margin-top:9px;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;color:#8fa59a;font-size:7px;text-align:center;font-weight:850}
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+      padding:10px 0 70px;
+    }
 
-    footer{min-height:90px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:10px}footer strong{color:#dbece4}
+    .card{
+      min-width:0;
+      min-height:285px;
+      display:grid;
+      grid-template-columns:42% 58%;
+      border:1px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      background:linear-gradient(145deg,rgba(13,40,30,.98),rgba(8,27,20,.98));
+      box-shadow:0 18px 48px rgba(0,0,0,.15);
+      transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+      position:relative;
+    }
+    .card:hover{transform:translateY(-4px);border-color:rgba(204,235,221,.22);box-shadow:var(--shadow)}
 
-    .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(2,10,7,.78);backdrop-filter:blur(12px)}.modal.open{display:flex}.modal-card{width:min(420px,100%);border:1px solid var(--line2);border-radius:26px;background:linear-gradient(180deg,#103126,#081f17);box-shadow:var(--shadow);padding:22px}.modal-head{display:flex;justify-content:space-between;align-items:start;gap:14px}.modal-head small{display:block;color:var(--accent);font-size:8px;font-weight:950;letter-spacing:.15em;text-transform:uppercase}.modal-head h3{margin:5px 0 0;font-size:22px;letter-spacing:-.04em}.close{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025);cursor:pointer;font-size:19px}.qr-wrap{margin:20px auto 16px;width:244px;max-width:100%;padding:14px;border-radius:18px;background:#fff}.qr-wrap img{display:block;width:100%;height:auto}.modal-copy{margin:0;color:var(--muted);font-size:11px;line-height:1.65;text-align:center}.modal-contact{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);text-align:center;color:#e4f2eb;font-size:10px;line-height:1.65}
-    .toast{position:fixed;left:50%;bottom:24px;z-index:120;transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:11px 14px;border-radius:11px;background:#e9f7ef;color:#08251b;box-shadow:var(--shadow);font-size:10px;font-weight:850;transition:.2s ease}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .photo{
+      position:relative;
+      overflow:hidden;
+      min-height:285px;
+      background:
+        radial-gradient(circle at 35% 28%,rgba(139,217,178,.14),transparent 32%),
+        linear-gradient(155deg,#153c2e,#09241a 70%);
+      display:grid;place-items:center;
+    }
+    .photo::after{
+      content:"";position:absolute;inset:auto -20% -38% -20%;height:60%;
+      background:radial-gradient(circle,rgba(139,217,178,.14),transparent 70%);
+    }
+    .photo span{position:relative;z-index:1;color:var(--accent-soft);font-size:36px;font-weight:900;letter-spacing:-.07em}
+    .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;z-index:2}
+    .photo.has-photo img{display:block}
+
+    .content{
+      padding:27px 24px 22px;
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+    }
+    .role{color:var(--accent);font-size:8px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .name{margin:8px 0 3px;font-size:24px;line-height:1.05;letter-spacing:-.045em}
+    .project{margin:0;color:var(--muted);font-size:9.5px}
+
+    .contact{
+      margin-top:21px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      display:flex;flex-direction:column;gap:9px;
+    }
+    .contact a{
+      min-width:0;display:flex;align-items:center;gap:10px;
+      color:#dfece5;font-size:10.5px;line-height:1.35;
+      transition:color .18s ease;
+    }
+    .contact a:hover{color:#fff}
+    .contact svg{width:15px;height:15px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .contact span{overflow-wrap:anywhere}
+
+    .actions{
+      margin-top:auto;
+      padding-top:18px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:7px;
+    }
+    .action{
+      min-height:39px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:rgba(255,255,255,.018);
+      display:flex;align-items:center;justify-content:center;gap:6px;
+      cursor:pointer;font-size:8px;font-weight:800;color:#cbdad2;
+      transition:.18s ease;
+    }
+    .action:hover{background:rgba(139,217,178,.07);border-color:var(--line-strong);color:#fff}
+    .action svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+    footer{
+      min-height:78px;border-top:1px solid var(--line);
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      color:var(--muted);font-size:9px;
+    }
+    footer strong{color:#dce9e2;font-weight:750}
+
+    .modal{
+      position:fixed;inset:0;z-index:100;
+      display:none;align-items:center;justify-content:center;padding:20px;
+      background:rgba(2,9,7,.8);backdrop-filter:blur(12px);
+    }
+    .modal.open{display:flex}
+    .modal-card{
+      width:min(390px,100%);padding:22px;border-radius:24px;
+      border:1px solid var(--line-strong);
+      background:linear-gradient(180deg,#102f24,#081d16);
+      box-shadow:var(--shadow);
+    }
+    .modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .modal-head small{display:block;color:var(--accent);font-size:8px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    .modal-head h3{margin:5px 0 0;font-size:21px;letter-spacing:-.04em}
+    .close{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.02);cursor:pointer;font-size:18px}
+    .qr-wrap{width:226px;max-width:100%;margin:20px auto 14px;padding:12px;border-radius:16px;background:#fff}
+    .qr-wrap img{display:block;width:100%;height:auto}
+    .modal-copy{margin:0;color:var(--muted);font-size:10.5px;line-height:1.6;text-align:center}
+    .modal-contact{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);text-align:center;color:#e5f0ea;font-size:10px;line-height:1.65}
+
+    .toast{
+      position:fixed;left:50%;bottom:24px;z-index:120;
+      transform:translate(-50%,18px);opacity:0;pointer-events:none;
+      padding:11px 14px;border-radius:11px;background:#e8f6ee;color:#08231a;
+      box-shadow:var(--shadow);font-size:10px;font-weight:800;transition:.2s ease;
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
     :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
-    @media(max-width:1040px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about{grid-template-columns:1fr;gap:24px}.focus-grid{max-width:760px}}
-    @media(max-width:700px){.page{width:min(100% - 24px,1180px)}.topbar{min-height:74px}.brand small{display:none}.hero{padding:72px 0 76px}.hero-actions{flex-direction:column}.btn{width:100%}.focus-grid{grid-template-columns:1fr}.team-head{display:block}.team-head p:last-child{margin-top:12px}.team-grid{grid-template-columns:1fr}.portrait{height:230px}footer{align-items:flex-start;flex-direction:column;justify-content:center;padding:24px 0}.brand-mark{width:40px;height:40px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.member,.action{transition:none}}
+    @media(max-width:920px){
+      .cards{grid-template-columns:1fr}
+      .card{min-height:260px}
+      .photo{min-height:260px}
+    }
+
+    @media(max-width:620px){
+      .shell{width:min(100% - 24px,1120px)}
+      header{min-height:76px}
+      .brand small{display:none}
+      .intro{padding:46px 0 25px}
+      .cards{gap:13px;padding-bottom:48px}
+      .card{grid-template-columns:110px 1fr;min-height:235px;border-radius:20px}
+      .photo{min-height:235px}
+      .photo span{font-size:25px}
+      .content{padding:20px 16px 16px}
+      .name{font-size:20px}
+      .contact{margin-top:16px;padding-top:13px}
+      .contact a{font-size:9.5px}
+      .actions{grid-template-columns:repeat(2,1fr);padding-top:14px}
+      .action{min-height:38px}
+      footer{padding:22px 0;min-height:auto;flex-direction:column;align-items:flex-start;gap:6px}
+    }
+
+    @media(max-width:410px){
+      .card{grid-template-columns:1fr}
+      .photo{min-height:210px}
+      .content{padding:18px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .card,.action,.share{transition:none}
+    }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="NeuroOncoTrack-AI ana sayfa">
-        <span class="brand-mark" aria-hidden="true">N/AI</span>
-        <span><strong>NeuroOncoTrack-AI</strong><small>HealthTech Project Team</small></span>
+  <main class="shell">
+    <header>
+      <a class="brand" href="#top" aria-label="NeuroOncoTrack-AI">
+        <span class="mark" aria-hidden="true">N/AI</span>
+        <span><strong>NeuroOncoTrack-AI</strong><small>HealthTech × Artificial Intelligence</small></span>
       </a>
+      <button class="share" id="shareBtn" type="button" aria-label="Sayfayı paylaş">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.7 6.8-4.1M8.6 13.3l6.8 4.1"/></svg>
+      </button>
     </header>
 
-    <section class="hero" id="top">
-      <div>
-        <p class="eyebrow">HealthTech × Artificial Intelligence</p>
-        <h1>NeuroOnco<span>Track—AI</span></h1>
-        <p class="tagline">Yapay zekâ ile onkoloji verisini daha anlamlı hale getiriyoruz.</p>
-        <p class="lead">Beyin tümörlerinde histolojik tip sınıflandırması ve radyogenomik tahmin süreçlerine yapay zekâ desteği sunmayı hedefleyen sağlık teknolojisi projesi.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#team">Ekiple tanış
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a class="btn btn-secondary" href="#project">Projeyi incele
-            <svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-          </a>
-          <button class="btn btn-secondary" id="shareBtn" type="button">Sayfayı paylaş
-            <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.7 6.8-4.1M8.6 13.3l6.8 4.1"/></svg>
-          </button>
+    <section class="intro" id="top">
+      <p>Proje Ekibi</p>
+      <h1>Dijital Kartvizit</h1>
+      <div class="sub">NeuroOncoTrack-AI ekibine doğrudan ulaşın.</div>
+    </section>
+
+    <section class="cards" aria-label="Ekip üyeleri">
+      <article class="card" data-name="Zeynep Ersöz" data-phone="+90 545 332 49 50" data-email="zeynepersozz06@gmail.com" data-qr="./assets/qr/zeynep.png">
+        <div class="photo" data-photo="./assets/team/zeynep.webp"><span>ZE</span></div>
+        <div class="content">
+          <span class="role">Takım Kaptanı</span>
+          <h2 class="name">Zeynep Ersöz</h2>
+          <p class="project">NeuroOncoTrack-AI</p>
+          <div class="contact">
+            <a href="tel:+905453324950"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg><span>+90 545 332 49 50</span></a>
+            <a href="mailto:zeynepersozz06@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span>zeynepersozz06@gmail.com</span></a>
+          </div>
+          <div class="actions">
+            <a class="action" href="tel:+905453324950"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg>Ara</a>
+            <a class="action" href="mailto:zeynepersozz06@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Mail</a>
+            <a class="action" href="https://www.linkedin.com/in/zeynep-ers%C3%B6z0" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>LinkedIn</a>
+            <button class="action qr" type="button"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>QR</button>
+          </div>
         </div>
-      </div>
+      </article>
 
-    </section>
-
-
-
-    <section class="about" id="project">
-      <div><p class="eyebrow">Proje yaklaşımı</p><h2>Veriden klinik değere uzanan bir AI akışı.</h2></div>
-      <div>
-        <p class="about-copy">NeuroOncoTrack-AI; onkoloji verisini yapay zekâ ile analiz ederek sınıflandırma ve tahmin süreçlerini daha sistematik, izlenebilir ve erişilebilir hale getirmeyi hedefler. Proje odağında görüntüleme verisi, radyogenomik ilişkiler ve karar destek yaklaşımı bulunur.</p>
-        <div class="focus-grid">
-          <div class="focus"><b>01</b><strong>Görüntüleme verisi</strong><p>Medikal görüntülerden anlamlı örüntülerin çıkarılması.</p></div>
-          <div class="focus"><b>02</b><strong>AI analizi</strong><p>Sınıflandırma ve tahmin görevlerinde yapay zekâ desteği.</p></div>
-          <div class="focus"><b>03</b><strong>Karar desteği</strong><p>Çıktıların yorumlanabilir ve kullanışlı bir akışta sunulması.</p></div>
+      <article class="card" data-name="Ahmet Hakan Alabaş" data-phone="+90 507 894 34 33" data-email="hakanalabas000@gmail.com" data-qr="./assets/qr/hakan.png">
+        <div class="photo" data-photo="./assets/team/hakan.webp"><span>AHA</span></div>
+        <div class="content">
+          <span class="role">Proje Ekibi</span>
+          <h2 class="name">Ahmet Hakan Alabaş</h2>
+          <p class="project">NeuroOncoTrack-AI</p>
+          <div class="contact">
+            <a href="tel:+905078943433"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg><span>+90 507 894 34 33</span></a>
+            <a href="mailto:hakanalabas000@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span>hakanalabas000@gmail.com</span></a>
+          </div>
+          <div class="actions">
+            <a class="action" href="tel:+905078943433"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg>Ara</a>
+            <a class="action" href="mailto:hakanalabas000@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Mail</a>
+            <a class="action" href="https://www.linkedin.com/in/ahmet-hakan-alaba%C5%9F-20b811330" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>LinkedIn</a>
+            <button class="action qr" type="button"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>QR</button>
+          </div>
         </div>
-      </div>
+      </article>
+
+      <article class="card" data-name="Yusufcan Esener" data-phone="+90 553 711 54 44" data-email="yusufcanesener@gmail.com" data-qr="./assets/qr/yusufcan.png">
+        <div class="photo" data-photo="./assets/team/yusufcan.webp"><span>YE</span></div>
+        <div class="content">
+          <span class="role">Proje Ekibi</span>
+          <h2 class="name">Yusufcan Esener</h2>
+          <p class="project">NeuroOncoTrack-AI</p>
+          <div class="contact">
+            <a href="tel:+905537115444"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg><span>+90 553 711 54 44</span></a>
+            <a href="mailto:yusufcanesener@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span>yusufcanesener@gmail.com</span></a>
+          </div>
+          <div class="actions">
+            <a class="action" href="tel:+905537115444"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg>Ara</a>
+            <a class="action" href="mailto:yusufcanesener@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Mail</a>
+            <a class="action" href="https://www.linkedin.com/in/yusufcanesener" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>LinkedIn</a>
+            <button class="action qr" type="button"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>QR</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-name="Mert Saka" data-phone="+90 530 378 37 28" data-email="mrtsaka0612@gmail.com" data-qr="./assets/qr/mert.png">
+        <div class="photo" data-photo="./assets/team/mert.webp"><span>MS</span></div>
+        <div class="content">
+          <span class="role">Proje Ekibi</span>
+          <h2 class="name">Mert Saka</h2>
+          <p class="project">NeuroOncoTrack-AI</p>
+          <div class="contact">
+            <a href="tel:+905303783728"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg><span>+90 530 378 37 28</span></a>
+            <a href="mailto:mrtsaka0612@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span>mrtsaka0612@gmail.com</span></a>
+          </div>
+          <div class="actions">
+            <a class="action" href="tel:+905303783728"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg>Ara</a>
+            <a class="action" href="mailto:mrtsaka0612@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Mail</a>
+            <a class="action" href="https://www.linkedin.com/in/mert-saka-a412b13a5" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>LinkedIn</a>
+            <button class="action qr" type="button"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>QR</button>
+          </div>
+        </div>
+      </article>
     </section>
 
-    <section class="team-section" id="team">
-      <div class="team-head">
-        <div><p class="eyebrow">Ekibimiz</p><h2>Projeyi geliştiren ekip</h2></div>
-        <p>Her karttan doğrudan arama, e-posta ve LinkedIn bağlantısına geçebilir; QR butonuyla kişi bilgilerini kameradan okutabilirsiniz. Dosya indirme yok.</p>
-      </div>
-
-      <div class="team-grid">
-        <article class="member" data-name="Zeynep Ersöz" data-phone="+90 545 332 49 50" data-email="zeynepersozz06@gmail.com" data-qr="./assets/qr/zeynep.png">
-          <div class="portrait" data-photo="./assets/team/zeynep.webp"><span>ZE</span></div>
-          <div class="member-body"><span class="role">Takım Kaptanı</span><h3>Zeynep Ersöz</h3><p class="member-sub">NeuroOncoTrack-AI</p>
-            <div class="actions">
-              <a class="action" href="tel:+905453324950" aria-label="Zeynep Ersöz'ü ara"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg></a>
-              <a class="action" href="mailto:zeynepersozz06@gmail.com" aria-label="Zeynep Ersöz'e e-posta gönder"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg></a>
-              <a class="action" href="https://www.linkedin.com/in/zeynep-ers%C3%B6z0" target="_blank" rel="noopener noreferrer" aria-label="Zeynep Ersöz LinkedIn"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg></a>
-              <button class="action qr" type="button" aria-label="Zeynep Ersöz QR kodunu göster"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg></button>
-            </div><div class="action-row-label"><span>Ara</span><span>Mail</span><span>LinkedIn</span><span>QR</span></div>
-          </div>
-        </article>
-
-        <article class="member" data-name="Ahmet Hakan Alabaş" data-phone="+90 507 894 34 33" data-email="hakanalabas000@gmail.com" data-qr="./assets/qr/hakan.png">
-          <div class="portrait" data-photo="./assets/team/hakan.webp"><span>AHA</span></div>
-          <div class="member-body"><span class="role">Proje Ekibi</span><h3>Ahmet Hakan Alabaş</h3><p class="member-sub">NeuroOncoTrack-AI</p>
-            <div class="actions">
-              <a class="action" href="tel:+905078943433" aria-label="Ahmet Hakan Alabaş'ı ara"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg></a>
-              <a class="action" href="mailto:hakanalabas000@gmail.com" aria-label="Ahmet Hakan Alabaş'a e-posta gönder"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg></a>
-              <a class="action" href="https://www.linkedin.com/in/ahmet-hakan-alaba%C5%9F-20b811330" target="_blank" rel="noopener noreferrer" aria-label="Ahmet Hakan Alabaş LinkedIn"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg></a>
-              <button class="action qr" type="button" aria-label="Ahmet Hakan Alabaş QR kodunu göster"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg></button>
-            </div><div class="action-row-label"><span>Ara</span><span>Mail</span><span>LinkedIn</span><span>QR</span></div>
-          </div>
-        </article>
-
-        <article class="member" data-name="Yusufcan Esener" data-phone="+90 553 711 54 44" data-email="yusufcanesener@gmail.com" data-qr="./assets/qr/yusufcan.png">
-          <div class="portrait" data-photo="./assets/team/yusufcan.webp"><span>YE</span></div>
-          <div class="member-body"><span class="role">Proje Ekibi</span><h3>Yusufcan Esener</h3><p class="member-sub">NeuroOncoTrack-AI</p>
-            <div class="actions">
-              <a class="action" href="tel:+905537115444" aria-label="Yusufcan Esener'i ara"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg></a>
-              <a class="action" href="mailto:yusufcanesener@gmail.com" aria-label="Yusufcan Esener'e e-posta gönder"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg></a>
-              <a class="action" href="https://www.linkedin.com/in/yusufcanesener" target="_blank" rel="noopener noreferrer" aria-label="Yusufcan Esener LinkedIn"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg></a>
-              <button class="action qr" type="button" aria-label="Yusufcan Esener QR kodunu göster"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg></button>
-            </div><div class="action-row-label"><span>Ara</span><span>Mail</span><span>LinkedIn</span><span>QR</span></div>
-          </div>
-        </article>
-
-        <article class="member" data-name="Mert Saka" data-phone="+90 530 378 37 28" data-email="mrtsaka0612@gmail.com" data-qr="./assets/qr/mert.png">
-          <div class="portrait" data-photo="./assets/team/mert.webp"><span>MS</span></div>
-          <div class="member-body"><span class="role">Proje Ekibi</span><h3>Mert Saka</h3><p class="member-sub">NeuroOncoTrack-AI</p>
-            <div class="actions">
-              <a class="action" href="tel:+905303783728" aria-label="Mert Saka'yı ara"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg></a>
-              <a class="action" href="mailto:mrtsaka0612@gmail.com" aria-label="Mert Saka'ya e-posta gönder"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg></a>
-              <a class="action" href="https://www.linkedin.com/in/mert-saka-a412b13a5" target="_blank" rel="noopener noreferrer" aria-label="Mert Saka LinkedIn"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg></a>
-              <button class="action qr" type="button" aria-label="Mert Saka QR kodunu göster"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg></button>
-            </div><div class="action-row-label"><span>Ara</span><span>Mail</span><span>LinkedIn</span><span>QR</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <footer><strong>NeuroOncoTrack-AI</strong><span>HealthTech × Artificial Intelligence</span><span>TEKNOFEST 2026 · Onkolojide 3T</span></footer>
+    <footer>
+      <strong>NeuroOncoTrack-AI</strong>
+      <span>HealthTech × Artificial Intelligence</span>
+      <span>TEKNOFEST 2026 · Onkolojide 3T</span>
+    </footer>
   </main>
 
   <div class="modal" id="qrModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="qrName">
     <div class="modal-card">
-      <div class="modal-head"><div><small>Kişi QR Kodu</small><h3 id="qrName">İletişim</h3></div><button class="close" id="closeModal" type="button" aria-label="QR penceresini kapat">×</button></div>
+      <div class="modal-head">
+        <div><small>Kişi QR Kodu</small><h3 id="qrName">İletişim</h3></div>
+        <button class="close" id="closeModal" type="button" aria-label="QR penceresini kapat">×</button>
+      </div>
       <div class="qr-wrap"><img id="qrImage" src="" alt="Kişi bilgileri QR kodu"></div>
-      <p class="modal-copy">Başka bir telefonun kamerasıyla tarat. QR kod kişi bilgilerini vCard formatında içerir; siteden herhangi bir dosya indirilmez.</p>
+      <p class="modal-copy">Telefon kamerasıyla taratarak iletişim bilgilerine erişebilirsiniz.</p>
       <div class="modal-contact" id="qrContact"></div>
     </div>
   </div>
+
   <div class="toast" id="toast"></div>
 
   <script>
-    (()=>{
-      const toast=document.getElementById('toast');let toastTimer;
+    (() => {
+      const toast=document.getElementById('toast');
+      let toastTimer;
       const notify=(msg)=>{toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)};
 
-      document.querySelectorAll('.portrait[data-photo]').forEach(portrait=>{
-        const img=new Image();img.alt='';img.onload=()=>{portrait.prepend(img);portrait.classList.add('has-photo')};img.src=portrait.dataset.photo;
+      document.querySelectorAll('.photo[data-photo]').forEach(photo=>{
+        const img=new Image();
+        img.alt='';
+        img.onload=()=>{photo.prepend(img);photo.classList.add('has-photo')};
+        img.src=photo.dataset.photo;
       });
 
       document.getElementById('shareBtn').addEventListener('click',async()=>{
         try{
-          if(navigator.share){await navigator.share({title:document.title,text:'NeuroOncoTrack-AI dijital kartvizit',url:location.href});return}
-          if(navigator.clipboard){await navigator.clipboard.writeText(location.href);notify('Sayfa bağlantısı kopyalandı.');return}
+          if(navigator.share){
+            await navigator.share({title:document.title,text:'NeuroOncoTrack-AI dijital kartvizit',url:location.href});
+            return;
+          }
+          if(navigator.clipboard){
+            await navigator.clipboard.writeText(location.href);
+            notify('Sayfa bağlantısı kopyalandı.');
+            return;
+          }
           notify('Bağlantıyı adres çubuğundan kopyalayabilirsiniz.');
-        }catch(e){if(e.name!=='AbortError')notify('Paylaşım açılamadı.');}
+        }catch(e){
+          if(e.name!=='AbortError') notify('Paylaşım açılamadı.');
+        }
       });
 
-      const modal=document.getElementById('qrModal');const qrImage=document.getElementById('qrImage');const qrName=document.getElementById('qrName');const qrContact=document.getElementById('qrContact');const closeModal=document.getElementById('closeModal');let lastFocus=null;
-      const close=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastFocus)lastFocus.focus()};
+      const modal=document.getElementById('qrModal');
+      const qrImage=document.getElementById('qrImage');
+      const qrName=document.getElementById('qrName');
+      const qrContact=document.getElementById('qrContact');
+      const closeModal=document.getElementById('closeModal');
+      let lastFocus=null;
+
+      const close=()=>{
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow='';
+        if(lastFocus) lastFocus.focus();
+      };
+
       document.querySelectorAll('.action.qr').forEach(btn=>btn.addEventListener('click',()=>{
-        const card=btn.closest('.member');lastFocus=btn;qrName.textContent=card.dataset.name;qrImage.src=card.dataset.qr;qrImage.alt=`${card.dataset.name} kişi bilgileri QR kodu`;qrContact.innerHTML=`${card.dataset.phone}<br>${card.dataset.email}`;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';closeModal.focus();
+        const card=btn.closest('.card');
+        lastFocus=btn;
+        qrName.textContent=card.dataset.name;
+        qrImage.src=card.dataset.qr;
+        qrImage.alt=card.dataset.name+' kişi bilgileri QR kodu';
+        qrContact.innerHTML=card.dataset.phone+'<br>'+card.dataset.email;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        closeModal.focus();
       }));
-      closeModal.addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))close()});
+
+      closeModal.addEventListener('click',close);
+      modal.addEventListener('click',e=>{if(e.target===modal) close()});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open')) close()});
     })();
   </script>
 </body>
