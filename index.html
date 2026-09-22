@@ -251,61 +251,65 @@
       stroke-linecap:round;stroke-linejoin:round;
     }
     .access{
-      margin:10px 0 56px;
-      padding:28px 30px;
-      border:1px solid var(--line);
-      border-radius:24px;
-      background:linear-gradient(145deg,rgba(13,40,30,.82),rgba(8,27,20,.86));
+      margin:0 0 18px;
+      padding:34px 0 38px;
+      border-top:1px solid var(--line);
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:36px;
+      gap:40px;
     }
-    .access-copy{max-width:620px}
-    .access-copy .access-label{
-      margin:0 0 8px;
+    .access-copy{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+    .access-label{
       color:var(--accent);
       font-size:8px;
       font-weight:900;
-      letter-spacing:.16em;
+      letter-spacing:.17em;
       text-transform:uppercase;
     }
-    .access-copy h2{
-      margin:0;
-      font-size:clamp(22px,2.5vw,32px);
-      line-height:1.08;
-      letter-spacing:-.045em;
-    }
-    .access-copy p{
-      margin:10px 0 0;
+    .access-note{
       color:var(--muted);
-      font-size:11px;
-      line-height:1.7;
+      font-size:10px;
+      letter-spacing:.01em;
     }
     .site-qr{
-      flex:none;
       display:flex;
       align-items:center;
-      gap:16px;
+      gap:15px;
+      flex:none;
     }
     .site-qr img{
-      width:132px;
-      height:132px;
+      width:102px;
+      height:102px;
       display:block;
-      padding:8px;
-      border-radius:16px;
-      background:#fff;
+      padding:7px;
+      border-radius:10px;
+      background:#f7faf8;
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
     }
-    .site-qr-meta{max-width:190px}
-    .site-qr-meta strong{display:block;font-size:11px}
-    .site-qr-meta span{
+    .site-qr-meta{
+      max-width:190px;
+    }
+    .site-qr-meta strong{
+      display:block;
+      font-size:10px;
+      font-weight:750;
+      letter-spacing:-.01em;
+    }
+    .site-qr-meta a{
       display:block;
       margin-top:5px;
       color:var(--muted);
-      font-size:8.5px;
-      line-height:1.55;
+      font-size:8px;
+      line-height:1.5;
       overflow-wrap:anywhere;
+      transition:color .18s ease;
     }
+    .site-qr-meta a:hover{color:var(--text)}
 
     footer{
       min-height:72px;
@@ -320,31 +324,6 @@
     footer strong{color:#dbe8e1;font-weight:700}
     footer span:last-child{opacity:.72}
 
-    .modal{
-      position:fixed;inset:0;z-index:100;
-      display:none;align-items:center;justify-content:center;padding:20px;
-      background:rgba(2,9,6,.82);backdrop-filter:blur(12px);
-    }
-    .modal.open{display:flex}
-    .modal-card{
-      width:min(390px,100%);
-      padding:22px;
-      border-radius:23px;
-      border:1px solid var(--line-strong);
-      background:linear-gradient(180deg,#102f24,#081d16);
-      box-shadow:var(--shadow);
-    }
-    .modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-    .modal-head small{display:block;color:var(--accent);font-size:8px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
-    .modal-head h3{margin:5px 0 0;font-size:21px;letter-spacing:-.04em}
-    .close{
-      width:36px;height:36px;border-radius:10px;border:1px solid var(--line);
-      background:rgba(255,255,255,.02);cursor:pointer;font-size:18px
-    }
-    .qr-wrap{width:226px;max-width:100%;margin:20px auto 14px;padding:12px;border-radius:16px;background:#fff}
-    .qr-wrap img{display:block;width:100%;height:auto}
-    .modal-copy{margin:0;color:var(--muted);font-size:10.5px;line-height:1.6;text-align:center}
-    .modal-contact{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);text-align:center;color:#e5f0ea;font-size:10px;line-height:1.65}
 
     .toast{
       position:fixed;left:50%;bottom:24px;z-index:120;
@@ -362,10 +341,8 @@
     }
 
     @media(max-width:680px){
-      .access{padding:22px;align-items:flex-start;flex-direction:column;gap:20px}
-      .site-qr{width:100%}
-      .site-qr img{width:118px;height:118px}
-      .shell{width:min(100% - 24px,920px)}
+      .access{padding:28px 0 32px;align-items:flex-start;gap:24px}
+      .site-qr img{width:94px;height:94px}      .shell{width:min(100% - 24px,920px)}
       header{min-height:74px}
       .brand-copy small{display:none}
       .intro{padding:38px 0 24px;display:block}
@@ -391,6 +368,8 @@
     }
 
     @media(max-width:430px){
+      .access{flex-direction:column}
+      .site-qr{width:100%;justify-content:space-between}
       .card{grid-template-columns:1fr}
       .left{flex-direction:row;align-items:center}
       .photo{width:88px;height:88px}
@@ -425,7 +404,7 @@
         <p class="kicker">Ekip İletişim Kartları</p>
         <h1>NeuroOncoTrack-AI</h1>
       </div>
-      <p class="intro-desc">Ekip üyelerinin iletişim bilgilerine, LinkedIn profillerine ve kişi QR kodlarına tek noktadan erişin.</p>
+      <p class="intro-desc">Ekip üyelerinin iletişim bilgilerine ve LinkedIn profillerine tek noktadan erişin.</p>
     </section>
 
     <section class="cards" aria-label="Ekip üyeleri">
@@ -538,17 +517,16 @@
       </article>
     </section>
 
-    <section class="access" aria-labelledby="accessTitle">
+    <section class="access" aria-label="Mobil erişim">
       <div class="access-copy">
-        <p class="access-label">Mobil erişim</p>
-        <h2 id="accessTitle">Bu dijital kartviziti telefonunda aç.</h2>
-        <p>QR kodu taratarak sayfayı doğrudan telefonunda açabilir ve ekip iletişim bilgilerine istediğin zaman ulaşabilirsin.</p>
+        <span class="access-label">Mobil erişim</span>
+        <span class="access-note">Kartviziti telefonunda aç</span>
       </div>
       <div class="site-qr">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADG0lEQVR4nO2cTW7bMBBG31QCvKSAHCBHoW7QIwU9Um5AHSUHKCAtA1D4uiApO02BNkgru/JwwdgyHzBE6G/+mJj48Ji+fJwBhxxyyCGHHHLomJDV0QOLmY2AjaxmI6uVZ2b1g/9kTw59CoqSpBmYHiUo5+AkpeUkG+kkSXoL7WeeQ/tBff25DBCfwQgglgFBhmnEADDo8u7mOXQbkI1BgsUMgt7np//jnhz6w9G/e7IYTAbEJIywvl9y43ty6DNQ+3UHAQtAmDHCDLD2msaTDOBSKW58Tw79BWgyM7MBiC99mWxcTrKnGYC1pBrXMs+hvTXiUgBC3qZXYxqwqiDXMM+h3SFKVhlnADpJc6fyKoWMNFOm+qkkpRvfk0N/AwoZoooooBQyNi49NoaacioBNl7JPId2g6jfe2WUmkYoAUpB7W2oMuIacXyoeo2qEZl6NooydCJKddoW+4k4NHQZR5RJNXpo56BpBKHJiZ+II0Ptax+qMigVZcgUh3F2J6nIiJ+Ig0NbX+Mkiy8nQfhuYhkw6LCYutr4ii99y1JvfE8OfQaqJyLOg0F4NQHUIuXygCbrcnvrna57gFocIemNw6D5jxla3Lmtu/E9OfQZqGWfM0DYgsptKkvm7YD4iTg6VLyGEYTF55OYxuomgC5bbXzl3uI8mMcRx4darlFetYTj0pN4FfseIXuaO8FyKiJg49KjVG7MZMwepdL4uo55Dl2nZqnzSMD5+tRlKds14ujQ5iEyzUNszY3Nf5TCJV7FvjsoSEzDajaGjD299JhZj9LZYVzTPIf2gLa+Rlems4d4oxFsXQ/XiIND2x2qXCbbrujD0mMxATHVOubu5jm0O9TqEWV0WdPjq2n6uvb1Du4yAMtDKWB7PeJuoNgKl5d5aMs+yzQN1zPPoSvEEVCCiTo6ne9H1Eeefd4pFCRpXk3frC91zNrkmm/CPIf+MfT+D7ZYe2oj4wGLzw+ZyUDTMHsccQfQZQ/jF4lnu6Lfbux7herw0GXFocQMofW36l1saDXu7DXLO4BMv1/z8/D/TOaQQw455JBDDgH8ALlIeDU7U7MMAAAAAElFTkSuQmCC" alt="Dijital kartvizit sitesi QR kodu">
         <div class="site-qr-meta">
           <strong>Dijital Kartvizit</strong>
-          <span>m0nareks.github.io/Dijital-Kartvitiz/</span>
+          <a href="https://m0nareks.github.io/Dijital-Kartvitiz/" target="_blank" rel="noopener noreferrer">m0nareks.github.io/Dijital-Kartvitiz/</a>
         </div>
       </div>
     </section>
@@ -599,37 +577,6 @@
           if(e.name!=='AbortError') notify('Paylaşım açılamadı.');
         }
       });
-
-      const modal=document.getElementById('qrModal');
-      const qrImage=document.getElementById('qrImage');
-      const qrName=document.getElementById('qrName');
-      const qrContact=document.getElementById('qrContact');
-      const closeModal=document.getElementById('closeModal');
-      let lastFocus=null;
-
-      const close=()=>{
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden','true');
-        document.body.style.overflow='';
-        if(lastFocus) lastFocus.focus();
-      };
-
-      document.querySelectorAll('.qr-btn').forEach(btn=>btn.addEventListener('click',()=>{
-        const card=btn.closest('.card');
-        lastFocus=btn;
-        qrName.textContent=card.dataset.name;
-        qrImage.src=card.dataset.qr;
-        qrImage.alt=card.dataset.name+' kişi bilgileri QR kodu';
-        qrContact.innerHTML=card.dataset.phone+'<br>'+card.dataset.email;
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden','false');
-        document.body.style.overflow='hidden';
-        closeModal.focus();
-      }));
-
-      closeModal.addEventListener('click',close);
-      modal.addEventListener('click',e=>{if(e.target===modal) close()});
-      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open')) close()});
     })();
   </script>
 </body>
