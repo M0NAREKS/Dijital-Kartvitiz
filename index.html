@@ -220,37 +220,92 @@
     .quick{
       margin-top:auto;
       padding-top:22px;
-      display:flex;
-      align-items:center;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:9px;
-      flex-wrap:wrap;
     }
     .quick-link,.qr-btn{
-      min-height:38px;
-      padding:0 12px;
+      min-height:48px;
+      padding:0 14px;
       border:1px solid var(--line);
-      border-radius:10px;
-      background:rgba(255,255,255,.018);
+      border-radius:12px;
+      background:rgba(255,255,255,.02);
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:7px;
+      gap:8px;
       cursor:pointer;
-      color:#d2dfd8;
-      font-size:9px;
+      color:#d7e3dc;
+      font-size:10px;
       font-weight:800;
       transition:.18s ease;
     }
     .quick-link:hover,.qr-btn:hover{
-      background:rgba(131,211,168,.07);
+      background:rgba(131,211,168,.08);
       border-color:var(--line-strong);
       color:#fff;
+      transform:translateY(-1px);
     }
     .quick-link svg,.qr-btn svg{
-      width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;
+      width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;
       stroke-linecap:round;stroke-linejoin:round;
     }
-    .linkedin{margin-left:auto}
+    .access{
+      margin:10px 0 56px;
+      padding:28px 30px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(145deg,rgba(13,40,30,.82),rgba(8,27,20,.86));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:36px;
+    }
+    .access-copy{max-width:620px}
+    .access-copy .access-label{
+      margin:0 0 8px;
+      color:var(--accent);
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .access-copy h2{
+      margin:0;
+      font-size:clamp(22px,2.5vw,32px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+    }
+    .access-copy p{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.7;
+    }
+    .site-qr{
+      flex:none;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+    .site-qr img{
+      width:132px;
+      height:132px;
+      display:block;
+      padding:8px;
+      border-radius:16px;
+      background:#fff;
+    }
+    .site-qr-meta{max-width:190px}
+    .site-qr-meta strong{display:block;font-size:11px}
+    .site-qr-meta span{
+      display:block;
+      margin-top:5px;
+      color:var(--muted);
+      font-size:8.5px;
+      line-height:1.55;
+      overflow-wrap:anywhere;
+    }
 
     footer{
       min-height:72px;
@@ -307,6 +362,9 @@
     }
 
     @media(max-width:680px){
+      .access{padding:22px;align-items:flex-start;flex-direction:column;gap:20px}
+      .site-qr{width:100%}
+      .site-qr img{width:118px;height:118px}
       .shell{width:min(100% - 24px,920px)}
       header{min-height:74px}
       .brand-copy small{display:none}
@@ -337,7 +395,7 @@
       .left{flex-direction:row;align-items:center}
       .photo{width:88px;height:88px}
       .mini-brand{display:flex}
-      .quick{display:grid;grid-template-columns:1fr 1fr}
+      .quick{grid-template-columns:repeat(3,minmax(0,1fr))}
       .quick-link,.qr-btn{width:100%}
     }
 
@@ -371,7 +429,7 @@
     </section>
 
     <section class="cards" aria-label="Ekip üyeleri">
-      <article class="card" data-name="Zeynep Ersöz" data-phone="+90 545 332 49 50" data-email="zeynepersozz06@gmail.com" data-qr="./assets/qr/zeynep.png">
+      <article class="card" data-name="Zeynep Ersöz" data-phone="+90 545 332 49 50" data-email="zeynepersozz06@gmail.com">
         <div class="left">
           <div class="photo" data-photo="./assets/team/zeynep.webp" data-member="zeynep"><span>ZE</span></div>
           <div class="mini-brand"><span class="mini-dot"></span><span>NeuroOncoTrack-AI</span></div>
@@ -392,13 +450,13 @@
           </div>
           <div class="quick">
             <a class="quick-link" href="tel:+905453324950"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg>Ara</a>
+            <a class="quick-link" href="mailto:zeynepersozz06@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Mail</a>
             <a class="quick-link linkedin" href="https://www.linkedin.com/in/zeynep-ers%C3%B6z0" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>LinkedIn</a>
-            <button class="qr-btn" type="button"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>QR</button>
           </div>
         </div>
       </article>
 
-      <article class="card" data-name="Ahmet Hakan Alabaş" data-phone="+90 507 894 34 33" data-email="hakanalabas000@gmail.com" data-qr="./assets/qr/hakan.png">
+      <article class="card" data-name="Ahmet Hakan Alabaş" data-phone="+90 507 894 34 33" data-email="hakanalabas000@gmail.com">
         <div class="left">
           <div class="photo" data-photo="./assets/team/hakan.webp" data-member="hakan"><span>AHA</span></div>
           <div class="mini-brand"><span class="mini-dot"></span><span>NeuroOncoTrack-AI</span></div>
@@ -419,13 +477,13 @@
           </div>
           <div class="quick">
             <a class="quick-link" href="tel:+905078943433"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg>Ara</a>
+            <a class="quick-link" href="mailto:hakanalabas000@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Mail</a>
             <a class="quick-link linkedin" href="https://www.linkedin.com/in/ahmet-hakan-alaba%C5%9F-20b811330" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>LinkedIn</a>
-            <button class="qr-btn" type="button"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>QR</button>
           </div>
         </div>
       </article>
 
-      <article class="card" data-name="Yusufcan Esener" data-phone="+90 553 711 54 44" data-email="yusufcanesener@gmail.com" data-qr="./assets/qr/yusufcan.png">
+      <article class="card" data-name="Yusufcan Esener" data-phone="+90 553 711 54 44" data-email="yusufcanesener@gmail.com">
         <div class="left">
           <div class="photo" data-photo="./assets/team/yusufcan.webp" data-member="yusufcan"><span>YE</span></div>
           <div class="mini-brand"><span class="mini-dot"></span><span>NeuroOncoTrack-AI</span></div>
@@ -446,13 +504,13 @@
           </div>
           <div class="quick">
             <a class="quick-link" href="tel:+905537115444"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg>Ara</a>
+            <a class="quick-link" href="mailto:yusufcanesener@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Mail</a>
             <a class="quick-link linkedin" href="https://www.linkedin.com/in/yusufcanesener" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>LinkedIn</a>
-            <button class="qr-btn" type="button"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>QR</button>
           </div>
         </div>
       </article>
 
-      <article class="card" data-name="Mert Saka" data-phone="+90 530 378 37 28" data-email="mrtsaka0612@gmail.com" data-qr="./assets/qr/mert.png">
+      <article class="card" data-name="Mert Saka" data-phone="+90 530 378 37 28" data-email="mrtsaka0612@gmail.com">
         <div class="left">
           <div class="photo" data-photo="./assets/team/mert.webp" data-member="mert"><span>MS</span></div>
           <div class="mini-brand"><span class="mini-dot"></span><span>NeuroOncoTrack-AI</span></div>
@@ -473,11 +531,26 @@
           </div>
           <div class="quick">
             <a class="quick-link" href="tel:+905303783728"><svg viewBox="0 0 24 24"><path d="M5.3 3h3.1l1.5 5-2 1.8a15.2 15.2 0 0 0 6.3 6.3l1.8-2 5 1.5v3.1a2.3 2.3 0 0 1-2.5 2.3C10.3 20.2 3.8 13.7 3 5.5A2.3 2.3 0 0 1 5.3 3Z"/></svg>Ara</a>
+            <a class="quick-link" href="mailto:mrtsaka0612@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Mail</a>
             <a class="quick-link linkedin" href="https://www.linkedin.com/in/mert-saka-a412b13a5" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M7 9v8M7 6.5v.01M11 17v-4.5c0-2 1.2-3.5 3.1-3.5S17 10.3 17 12.6V17M11 10v7M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>LinkedIn</a>
-            <button class="qr-btn" type="button"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>QR</button>
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="access" aria-labelledby="accessTitle">
+      <div class="access-copy">
+        <p class="access-label">Mobil erişim</p>
+        <h2 id="accessTitle">Bu dijital kartviziti telefonunda aç.</h2>
+        <p>QR kodu taratarak sayfayı doğrudan telefonunda açabilir ve ekip iletişim bilgilerine istediğin zaman ulaşabilirsin.</p>
+      </div>
+      <div class="site-qr">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADG0lEQVR4nO2cTW7bMBBG31QCvKSAHCBHoW7QIwU9Um5AHSUHKCAtA1D4uiApO02BNkgru/JwwdgyHzBE6G/+mJj48Ji+fJwBhxxyyCGHHHLomJDV0QOLmY2AjaxmI6uVZ2b1g/9kTw59CoqSpBmYHiUo5+AkpeUkG+kkSXoL7WeeQ/tBff25DBCfwQgglgFBhmnEADDo8u7mOXQbkI1BgsUMgt7np//jnhz6w9G/e7IYTAbEJIywvl9y43ty6DNQ+3UHAQtAmDHCDLD2msaTDOBSKW58Tw79BWgyM7MBiC99mWxcTrKnGYC1pBrXMs+hvTXiUgBC3qZXYxqwqiDXMM+h3SFKVhlnADpJc6fyKoWMNFOm+qkkpRvfk0N/AwoZoooooBQyNi49NoaacioBNl7JPId2g6jfe2WUmkYoAUpB7W2oMuIacXyoeo2qEZl6NooydCJKddoW+4k4NHQZR5RJNXpo56BpBKHJiZ+II0Ptax+qMigVZcgUh3F2J6nIiJ+Ig0NbX+Mkiy8nQfhuYhkw6LCYutr4ii99y1JvfE8OfQaqJyLOg0F4NQHUIuXygCbrcnvrna57gFocIemNw6D5jxla3Lmtu/E9OfQZqGWfM0DYgsptKkvm7YD4iTg6VLyGEYTF55OYxuomgC5bbXzl3uI8mMcRx4darlFetYTj0pN4FfseIXuaO8FyKiJg49KjVG7MZMwepdL4uo55Dl2nZqnzSMD5+tRlKds14ujQ5iEyzUNszY3Nf5TCJV7FvjsoSEzDajaGjD299JhZj9LZYVzTPIf2gLa+Rlems4d4oxFsXQ/XiIND2x2qXCbbrujD0mMxATHVOubu5jm0O9TqEWV0WdPjq2n6uvb1Du4yAMtDKWB7PeJuoNgKl5d5aMs+yzQN1zPPoSvEEVCCiTo6ne9H1Eeefd4pFCRpXk3frC91zNrkmm/CPIf+MfT+D7ZYe2oj4wGLzw+ZyUDTMHsccQfQZQ/jF4lnu6Lfbux7herw0GXFocQMofW36l1saDXu7DXLO4BMv1/z8/D/TOaQQw455JBDDgH8ALlIeDU7U7MMAAAAAElFTkSuQmCC" alt="Dijital kartvizit sitesi QR kodu">
+        <div class="site-qr-meta">
+          <strong>Dijital Kartvizit</strong>
+          <span>m0nareks.github.io/Dijital-Kartvitiz/</span>
+        </div>
+      </div>
     </section>
 
     <footer>
@@ -486,18 +559,6 @@
       <span>TEKNOFEST 2026 · Onkolojide 3T</span>
     </footer>
   </main>
-
-  <div class="modal" id="qrModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="qrName">
-    <div class="modal-card">
-      <div class="modal-head">
-        <div><small>Kişi QR Kodu</small><h3 id="qrName">İletişim</h3></div>
-        <button class="close" id="closeModal" type="button" aria-label="QR penceresini kapat">×</button>
-      </div>
-      <div class="qr-wrap"><img id="qrImage" src="" alt="Kişi bilgileri QR kodu"></div>
-      <p class="modal-copy">Telefon kamerasıyla taratarak iletişim bilgilerine erişebilirsiniz.</p>
-      <div class="modal-contact" id="qrContact"></div>
-    </div>
-  </div>
 
   <div class="toast" id="toast"></div>
 
