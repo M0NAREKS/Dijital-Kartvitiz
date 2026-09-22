@@ -224,7 +224,7 @@
       grid-template-columns:repeat(3,minmax(0,1fr));
       gap:9px;
     }
-    .quick-link,.qr-btn{
+    .quick-link{
       min-height:48px;
       padding:0 14px;
       border:1px solid var(--line);
@@ -240,41 +240,22 @@
       font-weight:800;
       transition:.18s ease;
     }
-    .quick-link:hover,.qr-btn:hover{
+    .quick-link:hover:hover{
       background:rgba(131,211,168,.08);
       border-color:var(--line-strong);
       color:#fff;
       transform:translateY(-1px);
     }
-    .quick-link svg,.qr-btn svg{
+    .quick-link svg svg{
       width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;
       stroke-linecap:round;stroke-linejoin:round;
     }
     .access{
       margin:0 0 18px;
-      padding:34px 0 38px;
+      padding:30px 0 34px;
       border-top:1px solid var(--line);
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:40px;
-    }
-    .access-copy{
-      display:flex;
-      flex-direction:column;
-      gap:5px;
-    }
-    .access-label{
-      color:var(--accent);
-      font-size:8px;
-      font-weight:900;
-      letter-spacing:.17em;
-      text-transform:uppercase;
-    }
-    .access-note{
-      color:var(--muted);
-      font-size:10px;
-      letter-spacing:.01em;
+      justify-content:flex-end;
     }
     .site-qr{
       display:flex;
@@ -283,13 +264,13 @@
       flex:none;
     }
     .site-qr img{
-      width:102px;
-      height:102px;
+      width:96px;
+      height:96px;
       display:block;
       padding:7px;
-      border-radius:10px;
+      border-radius:9px;
       background:#f7faf8;
-      box-shadow:0 10px 30px rgba(0,0,0,.12);
+      box-shadow:0 8px 24px rgba(0,0,0,.10);
     }
     .site-qr-meta{
       max-width:190px;
@@ -341,8 +322,8 @@
     }
 
     @media(max-width:680px){
-      .access{padding:28px 0 32px;align-items:flex-start;gap:24px}
-      .site-qr img{width:94px;height:94px}      .shell{width:min(100% - 24px,920px)}
+      .access{padding:26px 0 30px;justify-content:flex-start}
+      .site-qr img{width:92px;height:92px}      .shell{width:min(100% - 24px,920px)}
       header{min-height:74px}
       .brand-copy small{display:none}
       .intro{padding:38px 0 24px;display:block}
@@ -362,25 +343,24 @@
       .contact{margin-top:17px;padding-top:14px;gap:9px}
       .contact a{font-size:9.8px}
       .quick{padding-top:17px}
-      .quick-link,.qr-btn{min-height:36px;padding:0 10px;font-size:8.5px}
+      .quick-link{min-height:36px;padding:0 10px;font-size:8.5px}
       .linkedin{margin-left:0}
       footer{padding:20px 0;min-height:auto;flex-direction:column;align-items:flex-start;gap:6px}
     }
 
     @media(max-width:430px){
-      .access{flex-direction:column}
-      .site-qr{width:100%;justify-content:space-between}
+      .site-qr{width:100%;justify-content:flex-start}
       .card{grid-template-columns:1fr}
       .left{flex-direction:row;align-items:center}
       .photo{width:88px;height:88px}
       .mini-brand{display:flex}
       .quick{grid-template-columns:repeat(3,minmax(0,1fr))}
-      .quick-link,.qr-btn{width:100%}
+      .quick-link{width:100%}
     }
 
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
-      .card,.quick-link,.qr-btn,.share{transition:none}
+      .card,.quick-link,.share{transition:none}
     }
   </style>
 </head>
@@ -517,11 +497,7 @@
       </article>
     </section>
 
-    <section class="access" aria-label="Mobil erişim">
-      <div class="access-copy">
-        <span class="access-label">Mobil erişim</span>
-        <span class="access-note">Kartviziti telefonunda aç</span>
-      </div>
+    <section class="access" aria-label="Dijital kartvizit QR kodu">
       <div class="site-qr">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADG0lEQVR4nO2cTW7bMBBG31QCvKSAHCBHoW7QIwU9Um5AHSUHKCAtA1D4uiApO02BNkgru/JwwdgyHzBE6G/+mJj48Ji+fJwBhxxyyCGHHHLomJDV0QOLmY2AjaxmI6uVZ2b1g/9kTw59CoqSpBmYHiUo5+AkpeUkG+kkSXoL7WeeQ/tBff25DBCfwQgglgFBhmnEADDo8u7mOXQbkI1BgsUMgt7np//jnhz6w9G/e7IYTAbEJIywvl9y43ty6DNQ+3UHAQtAmDHCDLD2msaTDOBSKW58Tw79BWgyM7MBiC99mWxcTrKnGYC1pBrXMs+hvTXiUgBC3qZXYxqwqiDXMM+h3SFKVhlnADpJc6fyKoWMNFOm+qkkpRvfk0N/AwoZoooooBQyNi49NoaacioBNl7JPId2g6jfe2WUmkYoAUpB7W2oMuIacXyoeo2qEZl6NooydCJKddoW+4k4NHQZR5RJNXpo56BpBKHJiZ+II0Ptax+qMigVZcgUh3F2J6nIiJ+Ig0NbX+Mkiy8nQfhuYhkw6LCYutr4ii99y1JvfE8OfQaqJyLOg0F4NQHUIuXygCbrcnvrna57gFocIemNw6D5jxla3Lmtu/E9OfQZqGWfM0DYgsptKkvm7YD4iTg6VLyGEYTF55OYxuomgC5bbXzl3uI8mMcRx4darlFetYTj0pN4FfseIXuaO8FyKiJg49KjVG7MZMwepdL4uo55Dl2nZqnzSMD5+tRlKds14ujQ5iEyzUNszY3Nf5TCJV7FvjsoSEzDajaGjD299JhZj9LZYVzTPIf2gLa+Rlems4d4oxFsXQ/XiIND2x2qXCbbrujD0mMxATHVOubu5jm0O9TqEWV0WdPjq2n6uvb1Du4yAMtDKWB7PeJuoNgKl5d5aMs+yzQN1zPPoSvEEVCCiTo6ne9H1Eeefd4pFCRpXk3frC91zNrkmm/CPIf+MfT+D7ZYe2oj4wGLzw+ZyUDTMHsccQfQZQ/jF4lnu6Lfbux7herw0GXFocQMofW36l1saDXu7DXLO4BMv1/z8/D/TOaQQw455JBDDgH8ALlIeDU7U7MMAAAAAElFTkSuQmCC" alt="Dijital kartvizit sitesi QR kodu">
         <div class="site-qr-meta">
